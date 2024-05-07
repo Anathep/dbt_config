@@ -8,12 +8,18 @@ sources:
       - name: sales
         identifier: raw_gz_sales
         description: sales of greenweez / we have one row per products_id found in each orders_id.
+        tests:
+          - unique:
+              column_name: "(pdt_id || '-' || orders_id)"
         columns:
           - name: date_date
             description: the date of purchase
-        tests:
-          - unique:
-              column_name: "(orders_id || '_' || products_id)"
+        freshness: 
+          warn_after:
+            count: 90
+            period: day
+        loaded_at_field: "CAST(date_date as TIMESTAMP)"
+        
       - name: product
         identifier: raw_gz_product
         description: products of greenweez
