@@ -88,3 +88,8 @@ models:
       - name: margin
         description: revenue - purchase cost
         data_type: FLOAT64
+  - name: int_campaigns
+    description: union of all ads costs
+    tests:
+      - unique:
+          column_name : "(date_date || '-' || campaign_key)"
