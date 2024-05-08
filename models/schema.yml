@@ -101,3 +101,19 @@ models:
             - ads_cost
             - ads_impressions
             - ads_clicks
+  - name: finance_days
+    description: financial data per day including operational margin
+    tests:
+      - not_null:
+          column_name:
+            - nb_transactions
+            - revenue
+            - average_basket
+            - margin
+            - operational_margin
+  - name: finance_campaigns_day
+    description: financial data per day including ads margin
+    tests:
+      - not_null:
+          column_name:
+            - ads_margin
