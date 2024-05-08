@@ -93,3 +93,11 @@ models:
     tests:
       - unique:
           column_name : "(date_date || '-' || campaign_key)"
+  - name: int_campaigns_day
+    description: ads costs per day
+    tests:
+      - not_null:
+          column_name:
+            - ads_cost
+            - ads_impressions
+            - ads_clicks
